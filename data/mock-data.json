@@ -1,0 +1,582 @@
+{
+  "hospitalInfo": {
+    "name": "Alpha Hospital",
+    "tagline": "Your Health, Our Priority",
+    "description": "Providing world-class healthcare services with compassionate care and cutting-edge medical technology.",
+    "stats": {
+      "totalPatients": "5000",
+      "totalAppointments": "15000"
+    },
+    "services": [
+      {
+        "icon": "🚑",
+        "title": "Emergency Care",
+        "description": "24/7 emergency medical services with rapid response team"
+      },
+      {
+        "icon": "❤️",
+        "title": "Cardiology",
+        "description": "Comprehensive heart care with advanced cardiac procedures"
+      },
+      {
+        "icon": "🧠",
+        "title": "Neurology",
+        "description": "Expert neurological care for brain and nervous system disorders"
+      },
+      {
+        "icon": "🦴",
+        "title": "Orthopedics",
+        "description": "Specialized bone, joint, and muscle treatment services"
+      },
+      {
+        "icon": "📷",
+        "title": "Radiology",
+        "description": "Advanced imaging and diagnostic services"
+      },
+      {
+        "icon": "👶",
+        "title": "Pediatrics",
+        "description": "Specialized care for infants, children, and adolescents"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "1",
+      "email": "patient@demo.com",
+      "password": "demo123",
+      "name": "John Smith",
+      "role": "patient",
+      "patientId": "PAT001",
+      "phone": "+91 98765 43210",
+      "address": "123 Main Street, Mumbai, Maharashtra",
+      "dateOfBirth": "1990-05-15",
+      "gender": "male",
+      "emergencyContact": "+91 98765 43211",
+      "bloodGroup": "O+",
+      "allergies": "Penicillin, Peanuts"
+    },
+    {
+      "id": "2",
+      "email": "doctor@demo.com",
+      "password": "demo123",
+      "name": "Dr. Emma Shelton",
+      "role": "doctor",
+      "specialization": "Cardiology",
+      "experience": "10 years",
+      "qualification": "MBBS, MD Cardiology",
+      "phone": "+91 98765 43212"
+    },
+    {
+      "id": "3",
+      "email": "receptionist@demo.com",
+      "password": "demo123",
+      "name": "Sarah Johnson",
+      "role": "receptionist",
+      "phone": "+91 98765 43213"
+    }
+  ],
+  "patients": [
+    {
+      "id": "1",
+      "patientId": "PAT001",
+      "name": "John Smith",
+      "age": 45,
+      "gender": "Male",
+      "phone": "9876543210",
+      "email": "john.smith@email.com",
+      "bloodGroup": "O+",
+      "allergies": "Penicillin",
+      "address": "123 Main St, City",
+      "emergencyContact": "9876543211",
+      "guardianName": "Robert Smith",
+      "maritalStatus": "Married"
+    },
+    {
+      "id": "2",
+      "patientId": "PAT002",
+      "name": "Sarah Johnson",
+      "age": 32,
+      "gender": "Female",
+      "phone": "9876543211",
+      "email": "sarah.johnson@email.com",
+      "bloodGroup": "A+",
+      "allergies": "None",
+      "address": "456 Oak Ave, City",
+      "emergencyContact": "9876543212",
+      "guardianName": "Michael Johnson",
+      "maritalStatus": "Single"
+    },
+    {
+      "id": "3",
+      "patientId": "PAT003",
+      "name": "Robert Davis",
+      "age": 28,
+      "gender": "Male",
+      "phone": "9876543212",
+      "email": "robert.davis@email.com",
+      "bloodGroup": "B+",
+      "allergies": "Shellfish",
+      "address": "789 Pine St, City",
+      "emergencyContact": "9876543213",
+      "guardianName": "William Davis",
+      "maritalStatus": "Single"
+    },
+    {
+      "id": "4",
+      "patientId": "PAT004",
+      "name": "Emily Wilson",
+      "age": 55,
+      "gender": "Female",
+      "phone": "9876543213",
+      "email": "emily.wilson@email.com",
+      "bloodGroup": "AB+",
+      "allergies": "Latex, Aspirin",
+      "address": "321 Elm St, City",
+      "emergencyContact": "9876543214",
+      "guardianName": "James Wilson",
+      "maritalStatus": "Married"
+    },
+    {
+      "id": "U001",
+      "email": "john.smith@example.com",
+      "name": "John Smith",
+      "role": "patient",
+      "patientId": "PAT001"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Dr. Robert Carter",
+      "specialization": "Emergency Medicine",
+      "department": "Emergency Care",
+      "experience": "12 years",
+      "qualification": "MBBS, MD Emergency Medicine",
+      "consultationFee": 900,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "2",
+      "name": "Dr. Anita Sharma",
+      "specialization": "Emergency Medicine",
+      "department": "Emergency Care",
+      "experience": "8 years",
+      "qualification": "MBBS, MD Emergency Medicine",
+      "consultationFee": 800,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "3",
+      "name": "Dr. Vikram Singh",
+      "specialization": "Emergency Medicine",
+      "department": "Emergency Care",
+      "experience": "15 years",
+      "qualification": "MBBS, MD Emergency Medicine",
+      "consultationFee": 950,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "tuesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "wednesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "thursday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "friday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "saturday": ["10:00 AM", "11:00 AM", "12:00 PM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "4",
+      "name": "Dr. Maria Lopez",
+      "specialization": "Emergency Medicine",
+      "department": "Emergency Care",
+      "experience": "10 years",
+      "qualification": "MBBS, MD Emergency Medicine",
+      "consultationFee": 850,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    },
+
+    {
+      "id": "5",
+      "name": "Dr. Emma Shelton",
+      "specialization": "Cardiology",
+      "department": "Cardiology",
+      "experience": "10 years",
+      "qualification": "MBBS, MD Cardiology",
+      "consultationFee": 800,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "6",
+      "name": "Dr. Sanjay Patel",
+      "specialization": "Cardiology",
+      "department": "Cardiology",
+      "experience": "14 years",
+      "qualification": "MBBS, MD Cardiology",
+      "consultationFee": 900,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "7",
+      "name": "Dr. Linda Chen",
+      "specialization": "Cardiology",
+      "department": "Cardiology",
+      "experience": "9 years",
+      "qualification": "MBBS, MD Cardiology",
+      "consultationFee": 750,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "8",
+      "name": "Dr. Arjun Mehta",
+      "specialization": "Cardiology",
+      "department": "Cardiology",
+      "experience": "11 years",
+      "qualification": "MBBS, MD Cardiology",
+      "consultationFee": 850,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "tuesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "wednesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "thursday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "friday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "saturday": ["10:00 AM", "11:00 AM", "12:00 PM"],
+        "sunday": []
+      }
+    },
+
+    {
+      "id": "9",
+      "name": "Dr. James Wilson",
+      "specialization": "Neurology",
+      "department": "Neurology",
+      "experience": "15 years",
+      "qualification": "MBBS, MD Neurology",
+      "consultationFee": 1000,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "tuesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "wednesday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "thursday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "friday": ["10:00 AM", "11:00 AM", "12:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
+        "saturday": ["10:00 AM", "11:00 AM", "12:00 PM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "10",
+      "name": "Dr. Priya Nair",
+      "specialization": "Neurology",
+      "department": "Neurology",
+      "experience": "10 years",
+      "qualification": "MBBS, MD Neurology",
+      "consultationFee": 900,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "11",
+      "name": "Dr. David Kim",
+      "specialization": "Neurology",
+      "department": "Neurology",
+      "experience": "7 years",
+      "qualification": "MBBS, MD Neurology",
+      "consultationFee": 800,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "12",
+      "name": "Dr. Neha Gupta",
+      "specialization": "Neurology",
+      "department": "Neurology",
+      "experience": "12 years",
+      "qualification": "MBBS, MD Neurology",
+      "consultationFee": 950,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    },
+
+    {
+      "id": "13",
+      "name": "Dr. Thomas Lee",
+      "specialization": "Orthopedics",
+      "department": "Orthopedics",
+      "experience": "13 years",
+      "qualification": "MBBS, MS Orthopedics",
+      "consultationFee": 850,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "14",
+      "name": "Dr. Rakesh Kumar",
+      "specialization": "Orthopedics",
+      "department": "Orthopedics",
+      "experience": "10 years",
+      "qualification": "MBBS, MS Orthopedics",
+      "consultationFee": 800,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "15",
+      "name": "Dr. Emily Clark",
+      "specialization": "Orthopedics",
+      "department": "Orthopedics",
+      "experience": "8 years",
+      "qualification": "MBBS, MS Orthopedics",
+      "consultationFee": 750,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    },
+
+    {
+      "id": "16",
+      "name": "Dr. Michael Brown",
+      "specialization": "Radiology",
+      "department": "Radiology",
+      "experience": "12 years",
+      "qualification": "MBBS, MD Radiology",
+      "consultationFee": 700,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "17",
+      "name": "Dr. Sunita Rao",
+      "specialization": "Radiology",
+      "department": "Radiology",
+      "experience": "9 years",
+      "qualification": "MBBS, MD Radiology",
+      "consultationFee": 650,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "18",
+      "name": "Dr. John Harris",
+      "specialization": "Radiology",
+      "department": "Radiology",
+      "experience": "11 years",
+      "qualification": "MBBS, MD Radiology",
+      "consultationFee": 700,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    },
+
+    {
+      "id": "19",
+      "name": "Dr. Lisa Adams",
+      "specialization": "Pediatrics",
+      "department": "Pediatrics",
+      "experience": "9 years",
+      "qualification": "MBBS, MD Pediatrics",
+      "consultationFee": 650,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "tuesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "wednesday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "thursday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "friday": ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"],
+        "saturday": ["09:00 AM", "10:00 AM", "11:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "20",
+      "name": "Dr. Meena Desai",
+      "specialization": "Pediatrics",
+      "department": "Pediatrics",
+      "experience": "10 years",
+      "qualification": "MBBS, MD Pediatrics",
+      "consultationFee": 700,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "tuesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "wednesday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "thursday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "friday": ["08:00 AM", "09:00 AM", "10:00 AM", "01:00 PM", "02:00 PM", "03:00 PM"],
+        "saturday": ["08:00 AM", "09:00 AM", "10:00 AM"],
+        "sunday": []
+      }
+    },
+    {
+      "id": "21",
+      "name": "Dr. Sarah Thompson",
+      "specialization": "Pediatrics",
+      "department": "Pediatrics",
+      "experience": "7 years",
+      "qualification": "MBBS, MD Pediatrics",
+      "consultationFee": 600,
+      "image": "/placeholder.svg?height=100&width=100",
+      "availability": {
+        "monday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "tuesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "wednesday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "thursday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "friday": ["09:30 AM", "10:30 AM", "11:30 AM", "02:30 PM", "03:30 PM", "04:30 PM"],
+        "saturday": ["09:30 AM", "10:30 AM", "11:30 AM"],
+        "sunday": []
+      }
+    }
+  ],
+  "appointments": [
+    {
+      "id": "1",
+      "patientId": "PAT001",
+      "patientName": "John Smith",
+      "doctorId": "5",
+      "doctorName": "Dr. Emma Shelton",
+      "date": "2024-01-15",
+      "time": "10:00 AM",
+      "status": "completed",
+      "symptoms": "Chest pain and shortness of breath",
+      "diagnosis": "Mild hypertension",
+      "prescription": "Amlodipine 5mg once daily",
+      "consultationFee": 800
+    },
+    {
+      "id": "2",
+      "patientId": "PAT001",
+      "patientName": "John Smith",
+      "doctorId": "9",
+      "doctorName": "Dr. James Wilson",
+      "date": "2024-01-20",
+      "time": "11:00 AM",
+      "status": "upcoming",
+      "symptoms": "Headaches and dizziness",
+      "consultationFee": 1000
+    }
+  ]
+}
