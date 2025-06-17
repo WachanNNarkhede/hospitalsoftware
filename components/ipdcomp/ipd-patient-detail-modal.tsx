@@ -336,7 +336,7 @@ export default function IpdPatientDetailModal({ isOpen, onClose, patient }: IpdP
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
+    <div className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
       <div
         ref={modalRef}
         className="bg-white rounded-lg shadow-xl w-full max-w-7xl max-h-[95vh] overflow-hidden flex flex-col"

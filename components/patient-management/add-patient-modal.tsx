@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
 import { X, Upload } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -12,22 +11,24 @@ import { Textarea } from "@/components/ui/textarea"
 interface AddPatientModalProps {
   isOpen: boolean
   onClose: () => void
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onSave: (patientData: any) => void
+  onSave: (patientData: unknown) => void
 }
 
 export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientModalProps) {
-  const [activeTab, setActiveTab] = useState("basic")
+  const [activeTab, setActiveTab] = useState("appointment")
+  const [isAppointmentBooked, setIsAppointmentBooked] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
+    email: "",
+    appointmentDate: "",
+    appointmentTime: "",
     guardianName: "",
     gender: "",
     dateOfBirth: "",
     age: "",
     bloodGroup: "",
     maritalStatus: "",
-    phone: "",
-    email: "",
     address: "",
     remarks: "",
     allergies: "",
@@ -40,7 +41,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
     pulse: "",
     temperature: "",
     respiration: "",
-    appointmentDate: "",
     case: "",
     casualty: "No",
     oldPatient: "No",
@@ -82,6 +82,16 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  // Handle appointment booking
+  const handleAppointmentBook = () => {
+    if (formData.name && formData.phone && formData.email && formData.appointmentDate && formData.appointmentTime) {
+      setIsAppointmentBooked(true)
+      setActiveTab("basic")
+    } else {
+      alert("Please fill all required fields in the appointment section.")
+    }
+  }
+
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -97,7 +107,7 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div
         ref={modalRef}
         className="bg-white rounded-lg shadow-xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col"
@@ -119,43 +129,57 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
         <div className="bg-gray-100 px-6 py-2 flex space-x-4 border-b border-gray-200">
           <button
             className={`px-4 py-2 font-medium rounded-t-lg ${
-              activeTab === "basic"
+              activeTab === "appointment"
                 ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
                 : "text-gray-600 hover:text-blue-600"
             }`}
-            onClick={() => setActiveTab("basic")}
+            onClick={() => setActiveTab("appointment")}
           >
-            Basic Information
+            Request Appointment
           </button>
-          <button
-            className={`px-4 py-2 font-medium rounded-t-lg ${
-              activeTab === "medical"
-                ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
-                : "text-gray-600 hover:text-blue-600"
-            }`}
-            onClick={() => setActiveTab("medical")}
-          >
-            Medical Details
-          </button>
-          <button
-            className={`px-4 py-2 font-medium rounded-t-lg ${
-              activeTab === "payment"
-                ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
-                : "text-gray-600 hover:text-blue-600"
-            }`}
-            onClick={() => setActiveTab("payment")}
-          >
-            Payment Information
-          </button>
+          {isAppointmentBooked && (
+            <>
+              <button
+                className={`px-4 py-2 font-medium rounded-t-lg ${
+                  activeTab === "basic"
+                    ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
+                    : "text-gray-600 hover:text-blue-600"
+                }`}
+                onClick={() => setActiveTab("basic")}
+              >
+                Basic Information
+              </button>
+              <button
+                className={`px-4 py-2 font-medium rounded-t-lg ${
+                  activeTab === "medical"
+                    ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
+                    : "text-gray-600 hover:text-blue-600"
+                }`}
+                onClick={() => setActiveTab("medical")}
+              >
+                Medical Details
+              </button>
+              <button
+                className={`px-4 py-2 font-medium rounded-t-lg ${
+                  activeTab === "payment"
+                    ? "bg-white text-blue-600 border-t border-l border-r border-gray-200"
+                    : "text-gray-600 hover:text-blue-600"
+                }`}
+                onClick={() => setActiveTab("payment")}
+              >
+                Payment Information
+              </button>
+            </>
+          )}
         </div>
 
         {/* Form */}
         <div className="flex-1 overflow-y-auto p-6">
           <form onSubmit={handleSubmit}>
-            {/* Basic Information Tab */}
-            {activeTab === "basic" && (
+            {/* Request Appointment Tab */}
+            {activeTab === "appointment" && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="col-span-1">
+                <div>
                   <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1 block">
                     Name <span className="text-red-500">*</span>
                   </Label>
@@ -169,7 +193,78 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     required
                   />
                 </div>
+                <div>
+                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-1 block">
+                    Phone <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone number"
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1 block">
+                    Email <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email address"
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="appointmentDate" className="text-sm font-medium text-gray-700 mb-1 block">
+                    Appointment Date <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="appointmentDate"
+                    name="appointmentDate"
+                    type="date"
+                    value={formData.appointmentDate}
+                    onChange={handleChange}
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="appointmentTime" className="text-sm font-medium text-gray-700 mb-1 block">
+                    Appointment Time <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="appointmentTime"
+                    name="appointmentTime"
+                    type="time"
+                    value={formData.appointmentTime}
+                    onChange={handleChange}
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                  <Button
+                    type="button"
+                    onClick={handleAppointmentBook}
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Book Appointment
+                  </Button>
+                </div>
+              </div>
+            )}
 
+            {/* Basic Information Tab */}
+            {activeTab === "basic" && isAppointmentBooked && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div>
                   <Label htmlFor="guardianName" className="text-sm font-medium text-gray-700 mb-1 block">
                     Guardian Name
@@ -183,7 +278,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="gender" className="text-sm font-medium text-gray-700 mb-1 block">
                     Gender
@@ -201,7 +295,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="other">Other</option>
                   </select>
                 </div>
-
                 <div className="grid grid-cols-3 gap-2">
                   <div className="col-span-3">
                     <Label htmlFor="dateOfBirth" className="text-sm font-medium text-gray-700 mb-1 block">
@@ -264,7 +357,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     </select>
                   </div>
                 </div>
-
                 <div>
                   <Label htmlFor="age" className="text-sm font-medium text-gray-700 mb-1 block">
                     Age (yy-mm-dd)
@@ -278,7 +370,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="bloodGroup" className="text-sm font-medium text-gray-700 mb-1 block">
                     Blood Group
@@ -301,7 +392,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="O-">O-</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="maritalStatus" className="text-sm font-medium text-gray-700 mb-1 block">
                     Marital Status
@@ -320,7 +410,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="widowed">Widowed</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="patientPhoto" className="text-sm font-medium text-gray-700 mb-1 block">
                     Patient Photo
@@ -344,37 +433,7 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     />
                   </div>
                 </div>
-
                 <div>
-                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-1 block">
-                    Phone
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Phone number"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1 block">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email address"
-                    className="w-full"
-                  />
-                </div>
-
-                <div className="col-span-1 md:col-span-2">
                   <Label htmlFor="address" className="text-sm font-medium text-gray-700 mb-1 block">
                     Address
                   </Label>
@@ -388,7 +447,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     rows={3}
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="remarks" className="text-sm font-medium text-gray-700 mb-1 block">
                     Remarks
@@ -403,7 +461,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     rows={3}
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="allergies" className="text-sm font-medium text-gray-700 mb-1 block">
                     Any Known Allergies
@@ -418,7 +475,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     rows={3}
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="tpaId" className="text-sm font-medium text-gray-700 mb-1 block">
                     TPA ID
@@ -432,7 +488,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="tpaValidity" className="text-sm font-medium text-gray-700 mb-1 block">
                     TPA Validity
@@ -446,7 +501,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="nationalId" className="text-sm font-medium text-gray-700 mb-1 block">
                     National Identification Number
@@ -464,7 +518,7 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
             )}
 
             {/* Medical Details Tab */}
-            {activeTab === "medical" && (
+            {activeTab === "medical" && isAppointmentBooked && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div>
                   <Label htmlFor="height" className="text-sm font-medium text-gray-700 mb-1 block">
@@ -479,7 +533,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="weight" className="text-sm font-medium text-gray-700 mb-1 block">
                     Weight
@@ -493,7 +546,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="bp" className="text-sm font-medium text-gray-700 mb-1 block">
                     BP
@@ -507,7 +559,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="pulse" className="text-sm font-medium text-gray-700 mb-1 block">
                     Pulse
@@ -521,7 +572,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="temperature" className="text-sm font-medium text-gray-700 mb-1 block">
                     Temperature
@@ -535,7 +585,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="respiration" className="text-sm font-medium text-gray-700 mb-1 block">
                     Respiration
@@ -549,7 +598,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="symptomsType" className="text-sm font-medium text-gray-700 mb-1 block">
                     Symptoms Type
@@ -569,7 +617,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="musculoskeletal">Musculoskeletal</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="symptomsTitle" className="text-sm font-medium text-gray-700 mb-1 block">
                     Symptoms Title
@@ -582,7 +629,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div className="col-span-1 md:col-span-2 lg:col-span-3">
                   <Label htmlFor="symptomsDescription" className="text-sm font-medium text-gray-700 mb-1 block">
                     Symptoms Description
@@ -596,7 +642,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     rows={4}
                   />
                 </div>
-
                 <div className="col-span-1 md:col-span-2 lg:col-span-3">
                   <Label htmlFor="note" className="text-sm font-medium text-gray-700 mb-1 block">
                     Note
@@ -614,23 +659,8 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
             )}
 
             {/* Payment Information Tab */}
-            {activeTab === "payment" && (
+            {activeTab === "payment" && isAppointmentBooked && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div>
-                  <Label htmlFor="appointmentDate" className="text-sm font-medium text-gray-700 mb-1 block">
-                    Appointment Date <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="appointmentDate"
-                    name="appointmentDate"
-                    type="date"
-                    value={formData.appointmentDate}
-                    onChange={handleChange}
-                    className="w-full"
-                    required
-                  />
-                </div>
-
                 <div>
                   <Label htmlFor="case" className="text-sm font-medium text-gray-700 mb-1 block">
                     Case
@@ -644,7 +674,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="casualty" className="text-sm font-medium text-gray-700 mb-1 block">
                     Casualty
@@ -660,7 +689,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="Yes">Yes</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="oldPatient" className="text-sm font-medium text-gray-700 mb-1 block">
                     Old Patient
@@ -676,7 +704,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="Yes">Yes</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="tpa" className="text-sm font-medium text-gray-700 mb-1 block">
                     TPA
@@ -693,7 +720,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="tpa3">TPA 3</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="reference" className="text-sm font-medium text-gray-700 mb-1 block">
                     Reference
@@ -707,7 +733,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     className="w-full"
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="consultantDoctor" className="text-sm font-medium text-gray-700 mb-1 block">
                     Consultant Doctor <span className="text-red-500">*</span>
@@ -726,7 +751,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="dr3">Dr. Lisa Wilson</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="chargeCategory" className="text-sm font-medium text-gray-700 mb-1 block">
                     Charge Category
@@ -744,7 +768,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="category3">Investigation</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="charge" className="text-sm font-medium text-gray-700 mb-1 block">
                     Charge <span className="text-red-500">*</span>
@@ -763,7 +786,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="charge3">Emergency Consultation</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="tax" className="text-sm font-medium text-gray-700 mb-1 block">
                     Tax
@@ -780,7 +802,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <span className="ml-2">%</span>
                   </div>
                 </div>
-
                 <div>
                   <Label htmlFor="standardCharge" className="text-sm font-medium text-gray-700 mb-1 block">
                     Standard Charge (Rs.)
@@ -795,7 +816,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     readOnly
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="appliedCharge" className="text-sm font-medium text-gray-700 mb-1 block">
                     Applied Charge (Rs.) <span className="text-red-500">*</span>
@@ -810,7 +830,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     required
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="amount" className="text-sm font-medium text-gray-700 mb-1 block">
                     Amount (Rs.) <span className="text-red-500">*</span>
@@ -825,7 +844,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     required
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="paymentMode" className="text-sm font-medium text-gray-700 mb-1 block">
                     Payment Mode
@@ -843,7 +861,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     <option value="Insurance">Insurance</option>
                   </select>
                 </div>
-
                 <div>
                   <Label htmlFor="paidAmount" className="text-sm font-medium text-gray-700 mb-1 block">
                     Paid Amount (Rs.) <span className="text-red-500">*</span>
@@ -858,7 +875,6 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
                     required
                   />
                 </div>
-
                 <div>
                   <Label htmlFor="liveConsultation" className="text-sm font-medium text-gray-700 mb-1 block">
                     Live Consultation
@@ -884,9 +900,11 @@ export default function AddPatientModal({ isOpen, onClose, onSave }: AddPatientM
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700 text-white">
-            Save
-          </Button>
+          {isAppointmentBooked && (
+            <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700 text-white">
+              Save
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -11,13 +11,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, Eye, Check, X, Clock, Calendar, User, FileText, Filter } from "lucide-react"
 import mockData from "@/data/mock-data.json"
 
+interface Appointment {
+  id: string;
+  patientName: string;
+  patientEmail: string;
+  patientPhone: string;
+  doctorName: string;
+  date: string;
+  time: string;
+  consultationFee: number;
+  status: "pending" | "confirmed" | "completed" | "cancelled";
+  symptoms: string;
+  createdAt: string;
+}
+
 export default function AppointmentRequests() {
-  const [appointments, setAppointments] = useState(mockData.appointments)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [selectedAppointment, setSelectedAppointment] = useState<any>(null)
+  const [appointments, setAppointments] = useState<Appointment[]>(mockData.appointments as unknown as Appointment[])
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [statusFilter, setStatusFilter] = useState("all")
+  const [statusFilter, setStatusFilter] = useState<"all" | "pending" | "confirmed" | "completed" | "cancelled">("all")
 
   const filteredAppointments = appointments.filter((appointment) => {
     const matchesSearch =
@@ -27,24 +40,25 @@ export default function AppointmentRequests() {
     return matchesSearch && matchesStatus
   })
 
-  const updateAppointmentStatus = (appointmentId: string, newStatus: string) => {
-    setAppointments((prev) => prev.map((apt) => (apt.id === appointmentId ? { ...apt, status: newStatus } : apt)))
+  const updateAppointmentStatus = (appointmentId: string, newStatus: Appointment["status"]) => {
+    setAppointments((prev) =>
+      prev.map((apt) => (apt.id === appointmentId ? { ...apt, status: newStatus } : apt))
+    )
   }
 
-  const getStatusBadge = (status: string) => {
-    const statusConfig = {
+  const getStatusBadge = (status: Appointment["status"]) => {
+    const statusConfig: Record<Appointment["status"], { color: string; label: string }> = {
       pending: { color: "bg-yellow-100 text-yellow-800", label: "Pending" },
       confirmed: { color: "bg-blue-100 text-blue-800", label: "Confirmed" },
       completed: { color: "bg-green-100 text-green-800", label: "Completed" },
       cancelled: { color: "bg-red-100 text-red-800", label: "Cancelled" },
     }
 
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending
+    const config = statusConfig[status] || statusConfig.pending
     return <Badge className={config.color}>{config.label}</Badge>
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const openDetailModal = (appointment: any) => {
+  const openDetailModal = (appointment: Appointment) => {
     setSelectedAppointment(appointment)
     setIsDetailModalOpen(true)
   }
@@ -134,7 +148,7 @@ export default function AppointmentRequests() {
             </div>
             <div className="flex items-center space-x-2">
               <Filter className="w-4 h-4 text-gray-500" />
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <Select value={statusFilter} onValueChange={value => setStatusFilter(value as typeof statusFilter)}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
@@ -195,7 +209,7 @@ export default function AppointmentRequests() {
                       <p className="font-medium text-green-600">₹{appointment.consultationFee}</p>
                     </TableCell>
                     <TableCell>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center gap-2">
                         <Button size="sm" variant="outline" onClick={() => openDetailModal(appointment)}>
                           <Eye className="w-4 h-4 mr-1" />
                           View
@@ -293,11 +307,11 @@ export default function AppointmentRequests() {
               {/* Appointment Information */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg flex items-center space-x-2">
-                    <Calendar className="w-5 h-5" />
-                    <span>Appointment Information</span>
-                  </CardTitle>
-                </CardHeader>
+                    <CardTitle className="text-lg flex items-center space-x-2">
+                      <Calendar className="w-5 h-5" />
+                      <span>Appointment Information</span>
+                    </CardTitle>
+                  </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -344,7 +358,7 @@ export default function AppointmentRequests() {
                     <div>
                       <p className="text-sm text-gray-500">Request Date</p>
                       <p className="font-medium">
-                        {new Date(selectedAppointment.createdAt).toLocaleDateString()} at{" "}
+                        {new Date(selectedAppointment.createdAt).toLocaleDateString()} at
                         {new Date(selectedAppointment.createdAt).toLocaleTimeString()}
                       </p>
                     </div>

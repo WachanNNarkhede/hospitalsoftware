@@ -112,6 +112,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       experience: "10 years",
       qualification: "MBBS, MD Cardiology",
       phone: "+91 98765 43212",
+      patientId: undefined
     }
     setUser(staffUser)
     localStorage.setItem("user", JSON.stringify(staffUser))
@@ -130,6 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       emergencyContact: "+91 98765 43211",
       bloodGroup: "O+",
       allergies: "Penicillin, Peanuts",
+      patientId: undefined
     }
     setUser(patientUser)
     localStorage.setItem("user", JSON.stringify(patientUser))

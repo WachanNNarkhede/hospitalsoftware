@@ -175,7 +175,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ isOpen, setIsOpen }) 
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <label htmlFor="age" className="block text-xs font-semibold mb-1 text-white/90">
                   Age
                 </label>
@@ -190,9 +190,9 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ isOpen, setIsOpen }) 
                   className="w-full p-2.5 rounded-xl bg-white/90 text-blue-800 text-sm shadow-sm focus:ring-2 focus:ring-teal-400 focus:outline-none transition"
                   required
                 />
-              </div>
+              </div> */}
 
-              <div>
+              {/* <div>
                 <label htmlFor="gender" className="block text-xs font-semibold mb-1 text-white/90">
                   Gender
                 </label>
@@ -211,7 +211,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ isOpen, setIsOpen }) 
                     <option value="female">Female</option>
                     <option value="other">Other</option>
                   </select>
-              </div>
+              </div> */}
 
               <div>
                 <label htmlFor="date" className="block text-xs font-semibold mb-1 text-white/90">
@@ -251,7 +251,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ isOpen, setIsOpen }) 
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <label
                   htmlFor="symptoms"
                   className="block text-xs font-semibold mb-1 text-white/90"
@@ -267,7 +267,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ isOpen, setIsOpen }) 
                   rows={3}
                   required
                 />
-              </div>
+              </div> */}
 
               {error && <p className="text-red-300 text-xs text-center font-medium">{error}</p>}
 

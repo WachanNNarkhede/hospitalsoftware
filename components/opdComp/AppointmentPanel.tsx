@@ -68,7 +68,7 @@ export default function AppointmentPanel({ isOpen, onClose }: AppointmentPanelPr
   return (
     <>
       {/* Overlay */}
-      {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={onClose} />}
+      {isOpen && <div className="fixed inset-0 k bg-opacity-50 z-40 lg:hidden" onClick={onClose} />}
 
       {/* Appointment Panel */}
       <div

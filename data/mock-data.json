@@ -1,3 +1,4 @@
+
 {
   "hospitalInfo": {
     "name": "Alpha Hospital",
@@ -222,7 +223,6 @@
         "sunday": []
       }
     },
-
     {
       "id": "5",
       "name": "Dr. Emma Shelton",
@@ -299,7 +299,6 @@
         "sunday": []
       }
     },
-
     {
       "id": "9",
       "name": "Dr. James Wilson",
@@ -376,7 +375,6 @@
         "sunday": []
       }
     },
-
     {
       "id": "13",
       "name": "Dr. Thomas Lee",
@@ -434,7 +432,6 @@
         "sunday": []
       }
     },
-
     {
       "id": "16",
       "name": "Dr. Michael Brown",
@@ -492,7 +489,6 @@
         "sunday": []
       }
     },
-
     {
       "id": "19",
       "name": "Dr. Lisa Adams",

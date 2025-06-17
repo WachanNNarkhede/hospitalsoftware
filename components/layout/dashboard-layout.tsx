@@ -40,7 +40,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {/* Sidebar Overlay for Mobile */}
           {isMobile && isSidebarOpen && (
             <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+              className="fixed inset-0  bg-opacity-50 z-40 md:hidden"
               onClick={() => setIsSidebarOpen(false)}
             />
           )}
